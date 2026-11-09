@@ -102,10 +102,35 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
 .tl li:last-child b{background:linear-gradient(172deg,#fff0a8,#ffb347 40%,#ff3d8b);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:0}
 .tl p{font-size:1.35rem;color:var(--bone)}
 @media(max-width:560px){.fact{grid-template-columns:1fr;gap:.2rem}.top{flex-direction:column;gap:.2rem}.u{padding-left:.6rem}}
+
+.site-logo{
+  position:fixed;
+  top:clamp(14px, 3vw, 32px);
+  left:clamp(14px, 3vw, 32px);
+  z-index:70;
+  display:block;
+  width:clamp(55px, 8vw, 100px);
+}
+
+.site-logo img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+.site-logo:focus-visible{
+  outline:3px solid var(--heat);
+  outline-offset:5px;
+}
+
 </style>
 <noscript><style>.pre{display:none}</style></noscript>
 </head>
 <body>
+<a class="site-logo" href="/" aria-label="Home">
+  <img src="./logo.png" alt="GTA VI">
+</a>
 <div class="pre" id="pre"><span class="pl">Entering Leonida</span><button class="enter" id="enter" hidden>Enter with sound</button><span class="pc">0</span></div>
 <audio id="bgm" src="song.mp3" loop preload="auto"></audio>
 <button class="snd" id="snd" aria-pressed="false" aria-label="Toggle background music"><b class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></b><span>Sound off</span></button>
@@ -115,7 +140,7 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
   <div class="sea" aria-hidden="true"><i class="refl"></i></div>
   <svg class="palm l" viewBox="0 0 200 420" aria-hidden="true"><defs><path id="fr" d="M92 150C70 95 20 90 -10 135C30 115 62 125 92 150Z"/></defs><path class="tr" d="M70 420C78 330 100 250 92 150"/><g class="crown"><use href="#fr"/><use href="#fr" transform="rotate(55 92 150)"/><use href="#fr" transform="rotate(110 92 150)"/><use href="#fr" transform="rotate(165 92 150)"/><use href="#fr" transform="rotate(220 92 150)"/><use href="#fr" transform="rotate(275 92 150)"/><use href="#fr" transform="rotate(330 92 150)"/></g></svg>
   <svg class="palm r" viewBox="0 0 200 420" aria-hidden="true"><path class="tr" d="M70 420C78 330 100 250 92 150"/><g class="crown"><use href="#fr"/><use href="#fr" transform="rotate(55 92 150)"/><use href="#fr" transform="rotate(110 92 150)"/><use href="#fr" transform="rotate(165 92 150)"/><use href="#fr" transform="rotate(220 92 150)"/><use href="#fr" transform="rotate(275 92 150)"/><use href="#fr" transform="rotate(330 92 150)"/></g></svg>
-  <div class="top"><span>Unofficial fan-made countdown</span><span>PlayStation 5 and Xbox Series X|S</span></div>
+  <div class="top"><span>GTA6</span><span>PlayStation 5 and Xbox Series X|S</span></div>
   <div class="title">
     <h1><span class="gta">Grand Theft Auto</span><span class="vi">VI</span></h1>
   </div>
@@ -163,7 +188,7 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
     <div class="big fill" aria-hidden="true">19.11.2026 19.11.2026</div>
     <div class="big line" aria-hidden="true">19.11.2026 19.11.2026</div>
     <div class="foot">
-      <p>Unofficial fan project. Grand Theft Auto is a trademark of Take-Two Interactive. This page is not affiliated with or endorsed by Rockstar Games. Dates are as announced by Rockstar and may change.</p>
+      <p>Unofficial fan project. Grand Theft Auto is a trademark of Take-Two Interactive. This page is not affiliated with or endorsed by Rockstar Games. Dates are as announced by Rockstar and may change. Made By ❤️ From a fan. GITYUS13</p>
       <a href="https://www.rockstargames.com/VI">Official Rockstar page</a>
     </div>
   </section>
