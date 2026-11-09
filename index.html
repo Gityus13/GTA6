@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VI – Countdown to 19 November 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#12061f;--bone:#fff1e6;--dim:#b9a0c9;--red:#ff3d8b;--heat:#ff9a3c;--iron:#3a1a55;
+--display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--text:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--bone);font:500 1.2rem/1.5 var(--text);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65))}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;z-index:51;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:var(--bone)}
+a:focus-visible{outline:3px solid var(--heat);outline-offset:4px}
+h1,h2,p,dl,dd,ol{margin:0}
+
+.hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,3.5vw,44px);
+background:#12061f}
+.sky{position:absolute;inset:0 0 26% 0;background:linear-gradient(180deg,#12061f 0%,#2a0a55 46%,#8d1d8f 70%,#ff4f7b 88%,#ffb347 100%)}
+.sun{position:absolute;left:0;right:0;margin-inline:auto;bottom:calc(26% - min(21vw,210px));width:min(42vw,420px);aspect-ratio:1;border-radius:50%;background:linear-gradient(180deg,#fff0a8,#ffb347 45%,#ff4f7b)}
+.sea{position:absolute;inset:auto 0 0 0;height:26%;background:linear-gradient(180deg,#ff4f7b 0%,#5a1470 5%,#12061f 70%);overflow:hidden}
+.refl{position:absolute;left:0;right:0;margin-inline:auto;top:0;width:min(26vw,260px);height:100%;background:repeating-linear-gradient(180deg,rgba(255,176,71,.8) 0 3px,transparent 3px 12px);-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.palm{position:absolute;bottom:0;z-index:2;width:clamp(120px,19vw,290px);height:auto;overflow:visible}
+.palm .tr{fill:none;stroke:#0a0316;stroke-width:9;stroke-linecap:round}
+.palm .crown{fill:#0a0316}
+.palm.l{left:-1vw}.palm.r{right:-1vw;transform:scaleX(-1)}
+.top,.title,.count{position:relative;z-index:3}
+.count{background:linear-gradient(transparent,rgba(18,6,31,.8))}
+.top{display:flex;justify-content:space-between;gap:1rem;color:var(--dim);font-size:1rem;border-bottom:1px solid var(--iron);padding-bottom:.8rem}
+.title{text-align:center;margin:auto 0}
+.gta{display:block;font:900 clamp(1.1rem,3vw,2.4rem)/1 var(--display);letter-spacing:.42em;padding-left:.42em;text-transform:uppercase}
+.vi{display:block;font:900 clamp(10rem,38vw,38rem)/.78 var(--display);letter-spacing:-.02em;padding:.04em .06em 0;
+background:linear-gradient(172deg,#fff0a8 0%,#ffb347 28%,#ff5a8a 62%,#ffb4e6 100%);filter:drop-shadow(0 8px 0 rgba(18,6,31,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
+.count{display:grid;grid-template-columns:repeat(4,1fr);border-top:4px solid var(--bone)}
+.u{padding:.9rem 0 0 1rem}.u:first-child{padding-left:0}
+.u+.u{border-left:1px solid #2e2e2e}
+.n{display:block;font:900 clamp(2.4rem,9vw,7rem)/.95 var(--display);font-variant-numeric:tabular-nums}
+.l{color:var(--dim);font-size:1rem}
+
+.band{background:linear-gradient(90deg,#ff3d8b,#ff9a3c,#ffd166);color:#12061f;overflow:hidden;white-space:nowrap;border-block:3px solid #050505;transform:rotate(-1.2deg);margin:-1rem -2vw 0;position:relative;z-index:2}
+.track{display:flex;width:max-content}
+.grp{display:flex;font:900 clamp(1.6rem,4vw,3rem)/1 var(--display);text-transform:uppercase;padding:.35em 0}
+.grp span{padding:0 1.2rem}
+
+.stmt-wrap{padding:clamp(7rem,26vh,16rem) clamp(18px,6vw,96px)}
+.stmt{font:900 clamp(2.4rem,7vw,6.4rem)/.98 var(--display);text-transform:uppercase;max-width:20ch}
+
+.sec{padding:clamp(3.5rem,10vh,8rem) clamp(18px,6vw,96px)}
+h2{font:900 clamp(2rem,4.4vw,3.6rem)/1 var(--display);text-transform:uppercase;margin-bottom:clamp(1.5rem,5vh,3rem)}
+.fact{position:relative;display:grid;grid-template-columns:minmax(120px,1fr) 4fr;gap:1rem;align-items:baseline;padding:1.5rem 1rem;transition:background .2s,color .2s}
+.fact .ln{position:absolute;left:0;right:0;top:0;height:3px;background:var(--bone)}
+.fact:last-child{border-bottom:3px solid var(--bone)}
+.fact:hover{background:var(--red);color:#050505}
+.fact:hover dt,.fact:hover small{color:#050505}
+dt{color:var(--dim);transition:color .2s}
+dd{font:900 clamp(1.8rem,4.6vw,3.8rem)/1 var(--display);text-transform:uppercase}
+dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color:var(--dim);margin-top:.4rem;transition:color .2s}
+
+.tl{position:relative;list-style:none;padding:0 0 0 2.4rem;max-width:820px}
+.rail,.rail-bg{position:absolute;left:5px;top:.4rem;bottom:.4rem;width:4px}
+.rail-bg{background:var(--iron)}.rail{background:var(--red);transform-origin:top}
+.tl li{position:relative;padding-bottom:2.4rem;opacity:.3;transition:opacity .3s}
+.tl li::before{content:"";position:absolute;left:-2.4rem;top:.35rem;width:14px;height:14px;background:var(--bg);border:3px solid var(--dim)}
+.tl li.on{opacity:1}.tl li.on::before{background:var(--red);border-color:var(--red)}
+.tl li:last-child{padding-bottom:0}
+.tl b{display:block;font:900 clamp(1.7rem,3.4vw,2.8rem)/1.05 var(--display);text-transform:uppercase}
+.tl li:last-child b{color:var(--heat)}
+.tl p{color:var(--dim);max-width:46ch}
+
+.close{padding:clamp(4rem,14vh,9rem) 0 3rem;overflow:hidden}
+.big{width:max-content;white-space:nowrap;font:900 clamp(6rem,24vw,22rem)/.88 var(--display);padding:0 4vw}
+.big.fill{background:linear-gradient(90deg,#fff0a8,#ffb347,#ff3d8b,#b14bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.big.line{color:transparent;-webkit-text-stroke:2px var(--bone)}
+.foot{padding:2.5rem clamp(18px,6vw,96px) 0;display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;color:var(--dim);font-size:1rem}
+.foot p{max-width:62ch}
+.pre{position:fixed;inset:0;z-index:100;background:#12061f;display:flex;align-items:flex-end;justify-content:space-between;padding:clamp(18px,3.5vw,44px)}
+.pc{font:900 clamp(7rem,30vw,28rem)/.78 var(--display);font-variant-numeric:tabular-nums;background:linear-gradient(172deg,#fff0a8,#ffb347 35%,#ff5a8a 70%,#ffb4e6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pl{color:var(--dim);font-size:1rem}
+.enter{position:absolute;inset:0;margin:auto;width:max-content;height:max-content;background:transparent;color:var(--bone);border:2px solid var(--bone);padding:.7em 1.5em;font:900 clamp(1.4rem,3.4vw,2.4rem)/1 var(--display);letter-spacing:.28em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.enter:hover{background:var(--red);border-color:var(--red);color:#12061f}
+.enter:focus-visible,.snd:focus-visible{outline:3px solid var(--heat);outline-offset:4px}
+.snd{position:fixed;right:clamp(14px,3vw,32px);bottom:calc(clamp(14px,3vw,32px) + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:.8rem;background:rgba(18,6,31,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--bone);border:1px solid var(--iron);padding:.6rem 1rem;font:600 1rem var(--text);cursor:pointer}
+.eq{display:flex;align-items:center;gap:3px;height:20px}
+.eq i{display:block;width:3px;height:5px;background:var(--red)}
+.snd.on .eq i{animation:eq 1s ease-in-out infinite}
+.snd.on .eq i:nth-child(2){animation-delay:-.3s}.snd.on .eq i:nth-child(3){animation-delay:-.6s}.snd.on .eq i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:5px}50%{height:20px}}
+@media(prefers-reduced-motion:reduce){.snd.on .eq i{animation:none;height:12px}}
+.sec:has(.tl){overflow-x:auto}
+.sec.hs{min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.tl{display:flex;gap:5vw;width:max-content;max-width:none;padding:0 10vw 0 0}
+.tl li{flex:none;width:min(80vw,540px);padding:0 0 0 1.5rem;border-left:4px solid var(--red);opacity:1}
+.tl li::before,.rail,.rail-bg{display:none}
+.tl b{font-size:clamp(3.4rem,9vw,8rem);line-height:.9;margin-bottom:1rem;color:transparent;-webkit-text-stroke:2px var(--bone)}
+.tl li:last-child b{background:linear-gradient(172deg,#fff0a8,#ffb347 40%,#ff3d8b);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:0}
+.tl p{font-size:1.35rem;color:var(--bone)}
+@media(max-width:560px){.fact{grid-template-columns:1fr;gap:.2rem}.top{flex-direction:column;gap:.2rem}.u{padding-left:.6rem}}
+</style>
+<noscript><style>.pre{display:none}</style></noscript>
+</head>
+<body>
+<div class="pre" id="pre"><span class="pl">Entering Leonida</span><button class="enter" id="enter" hidden>Enter with sound</button><span class="pc">0</span></div>
+<audio id="bgm" src="song.mp3" loop preload="auto"></audio>
+<button class="snd" id="snd" aria-pressed="false" aria-label="Toggle background music"><b class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></b><span>Sound off</span></button>
+<header class="hero">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="sun" aria-hidden="true"></div>
+  <div class="sea" aria-hidden="true"><i class="refl"></i></div>
+  <svg class="palm l" viewBox="0 0 200 420" aria-hidden="true"><defs><path id="fr" d="M92 150C70 95 20 90 -10 135C30 115 62 125 92 150Z"/></defs><path class="tr" d="M70 420C78 330 100 250 92 150"/><g class="crown"><use href="#fr"/><use href="#fr" transform="rotate(55 92 150)"/><use href="#fr" transform="rotate(110 92 150)"/><use href="#fr" transform="rotate(165 92 150)"/><use href="#fr" transform="rotate(220 92 150)"/><use href="#fr" transform="rotate(275 92 150)"/><use href="#fr" transform="rotate(330 92 150)"/></g></svg>
+  <svg class="palm r" viewBox="0 0 200 420" aria-hidden="true"><path class="tr" d="M70 420C78 330 100 250 92 150"/><g class="crown"><use href="#fr"/><use href="#fr" transform="rotate(55 92 150)"/><use href="#fr" transform="rotate(110 92 150)"/><use href="#fr" transform="rotate(165 92 150)"/><use href="#fr" transform="rotate(220 92 150)"/><use href="#fr" transform="rotate(275 92 150)"/><use href="#fr" transform="rotate(330 92 150)"/></g></svg>
+  <div class="top"><span>Unofficial fan-made countdown</span><span>PlayStation 5 and Xbox Series X|S</span></div>
+  <div class="title">
+    <h1><span class="gta">Grand Theft Auto</span><span class="vi">VI</span></h1>
+  </div>
+  <div class="count" role="timer" aria-label="Time until 19 November 2026">
+    <div class="u"><span class="n" id="d">00</span><span class="l">days</span></div>
+    <div class="u"><span class="n" id="h">00</span><span class="l">hours</span></div>
+    <div class="u"><span class="n" id="m">00</span><span class="l">minutes</span></div>
+    <div class="u"><span class="n" id="s">00</span><span class="l">seconds</span></div>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true"><div class="track" id="track">
+  <div class="grp"><span>19 November 2026</span><span>/</span><span>PlayStation 5</span><span>/</span><span>Xbox Series X|S</span><span>/</span><span>Leonida</span><span>/</span></div>
+  <div class="grp"><span>19 November 2026</span><span>/</span><span>PlayStation 5</span><span>/</span><span>Xbox Series X|S</span><span>/</span><span>Leonida</span><span>/</span></div>
+</div></div>
+
+<main>
+  <section class="stmt-wrap">
+    <p class="stmt">Thirteen years after Grand Theft Auto V, Rockstar returns to the state of Leonida. The date has moved twice. It now stands.</p>
+  </section>
+
+  <section class="sec">
+    <h2>Confirmed details</h2>
+    <dl>
+      <div class="fact"><i class="ln"></i><dt>Release</dt><dd>Thursday, 19 November 2026</dd></div>
+      <div class="fact"><i class="ln"></i><dt>Platforms</dt><dd>PlayStation 5, Xbox Series X|S<small>No PC release date has been announced.</small></dd></div>
+      <div class="fact"><i class="ln"></i><dt>Developer</dt><dd>Rockstar Games</dd></div>
+      <div class="fact"><i class="ln"></i><dt>Setting</dt><dd>Leonida<small>A fictional state, including Vice City.</small></dd></div>
+    </dl>
+  </section>
+
+  <section class="sec">
+    <h2>The road to launch</h2>
+    <ol class="tl">
+      <span class="rail-bg" aria-hidden="true"></span><span class="rail" aria-hidden="true"></span>
+      <li><b>February 2022</b><p>Rockstar confirms the next Grand Theft Auto is in active development.</p></li>
+      <li><b>December 2023</b><p>The first trailer arrives.</p></li>
+      <li><b>May 2025</b><p>Release moves from autumn 2025 to 26 May 2026. A second trailer follows.</p></li>
+      <li><b>November 2025</b><p>Rockstar moves the date again, to 19 November 2026.</p></li>
+      <li><b>19 November 2026</b><p>Launch on PlayStation 5 and Xbox Series X|S.</p></li>
+    </ol>
+  </section>
+
+  <section class="close">
+    <div class="big fill" aria-hidden="true">19.11.2026 19.11.2026</div>
+    <div class="big line" aria-hidden="true">19.11.2026 19.11.2026</div>
+    <div class="foot">
+      <p>Unofficial fan project. Grand Theft Auto is a trademark of Take-Two Interactive. This page is not affiliated with or endorsed by Rockstar Games. Dates are as announced by Rockstar and may change.</p>
+      <a href="https://www.rockstargames.com/VI">Official Rockstar page</a>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasG = !!window.gsap;
+  var target = new Date(2026, 10, 19, 0, 0, 0).getTime();
+  var ids = ['d','h','m','s'], els = {}, last = {};
+  ids.forEach(function(k){ els[k] = document.getElementById(k); });
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var t = Math.floor(Math.max(0, target - Date.now())/1000);
+    var v = { d: Math.floor(t/86400), h: Math.floor(t%86400/3600), m: Math.floor(t%3600/60), s: t%60 };
+    ids.forEach(function(k){
+      var txt = pad(v[k]);
+      if (last[k] !== txt){
+        els[k].textContent = txt;
+        if (hasG && !reduce && last[k] !== undefined && k === 's'){
+          gsap.fromTo(els[k], {opacity:.25, x:-6}, {opacity:1, x:0, duration:.3, ease:'steps(4)'});
+        }
+        last[k] = txt;
+      }
+    });
+  }
+  tick(); setInterval(tick, 1000);
+
+  var bgm = document.getElementById('bgm'), snd = document.getElementById('snd'), wasOn = false;
+  function setSnd(){
+    var on = !bgm.paused;
+    snd.setAttribute('aria-pressed', on);
+    snd.classList.toggle('on', on);
+    snd.querySelector('span').textContent = on ? 'Sound on' : 'Sound off';
+  }
+  function playBgm(){
+    bgm.volume = hasG ? 0 : .7;
+    var p = bgm.play();
+    if (!p || !p.then) return Promise.resolve(false);
+    return p.then(function(){ if (hasG) gsap.to(bgm, {volume:.7, duration:3}); setSnd(); return true; },
+                  function(){ setSnd(); return false; });
+  }
+  snd.addEventListener('click', function(){ if (bgm.paused){ playBgm(); } else { bgm.pause(); setSnd(); } });
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden){ wasOn = !bgm.paused; bgm.pause(); }
+    else if (wasOn){ bgm.play().catch(function(){}); }
+    setSnd();
+  });
+  setSnd();
+
+  var stmt = document.querySelector('.stmt');
+  stmt.innerHTML = stmt.textContent.trim().split(/\s+/).map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
+
+  var lis = document.querySelectorAll('.tl li');
+  if (!hasG || reduce){ document.getElementById('pre').style.display='none'; lis.forEach(function(li){ li.classList.add('on'); }); return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.Lenis){
+    var lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // Opening: hard slam, then a short shake
+  var intro = gsap.timeline({paused:true})
+    .from('.top', {opacity:0, duration:.6}, 0)
+    .from('.vi', {scale:1.6, opacity:0, duration:.28, ease:'power4.in'}, .5)
+    .to('.vi', {x:'random(-14,14)', y:'random(-10,10)', duration:.04, repeat:9, yoyo:true, repeatRefresh:true}, .78)
+    .to('.vi', {x:0, y:0, duration:.05}, 1.2)
+    .from('.gta', {opacity:0, letterSpacing:'.9em', duration:1.4, ease:'power4.out'}, 1)
+    .from('.count', {scaleX:0, transformOrigin:'left', duration:.9, ease:'power4.inOut'}, 1)
+    .from('.u', {opacity:0, y:30, stagger:.1, duration:.7, ease:'power3.out'}, 1.4);
+
+  // The title is pushed away as the page moves on
+  var heroTl = gsap.timeline({scrollTrigger:{trigger:'.hero', start:'top top', end:'+=100%', pin:true, scrub:.6}});
+  heroTl.to('.title', {scale:2.4, opacity:0, ease:'power2.in'}, 0)
+    .to('.sun', {y:260, ease:'none'}, 0)
+    .to('.palm', {y:140, ease:'none'}, 0)
+    .to('.count', {opacity:0, y:60, ease:'none'}, .3);
+
+  // Preloader counts up, then lifts to reveal the scene
+  var pc = document.querySelector('.pc'), o = {v:0};
+  gsap.to(o, {v:100, duration:1.6, ease:'power2.inOut',
+    onUpdate:function(){ pc.textContent = Math.round(o.v); },
+    onComplete:function(){
+      function lift(){ gsap.to('#pre', {yPercent:-100, duration:.9, ease:'power4.inOut', onStart:function(){ intro.play(); }, onComplete:function(){ document.getElementById('pre').style.display='none'; }}); }
+      playBgm().then(function(ok){
+        if (ok){ lift(); return; }
+        var en = document.getElementById('enter'); en.hidden = false;
+        gsap.from(en, {opacity:0, duration:.6});
+        en.addEventListener('click', function(){ playBgm(); lift(); }, {once:true});
+      });
+    }});
+
+  // Colour-split glitch on the title
+  gsap.timeline({repeat:-1, repeatDelay:3.5, delay:4.5})
+    .set('.vi', {filter:'drop-shadow(-9px 0 #19d3c5) drop-shadow(9px 0 #ff3d8b)', skewX:10})
+    .set('.vi', {filter:'drop-shadow(0 8px 0 rgba(18,6,31,.55))', skewX:0}, '+=.07')
+    .set('.vi', {filter:'drop-shadow(7px 0 #19d3c5) drop-shadow(-7px 0 #ff3d8b)', skewX:-8}, '+=.12')
+    .set('.vi', {filter:'drop-shadow(0 8px 0 rgba(18,6,31,.55))', skewX:0}, '+=.06');
+
+  // Mouse depth
+  if (matchMedia('(pointer:fine)').matches){
+    var lay = [['.sun',26],['.palm',-40],['.vi',-18]].map(function(a){ return {q:gsap.quickTo(a[0], 'x', {duration:.9, ease:'power3'}), k:a[1]}; });
+    addEventListener('pointermove', function(e){ var p = e.clientX/innerWidth - .5; lay.forEach(function(l){ l.q(p*l.k); }); });
+  }
+
+  // Scene: sun rises from the sea, water shimmers, palms sway
+  gsap.from('.sun', {yPercent:130, duration:2.6, ease:'power2.out', delay:1.7});
+  gsap.to('.refl', {scaleX:1.2, opacity:.6, duration:2.4, yoyo:true, repeat:-1, ease:'sine.inOut'});
+  gsap.to('.crown', {rotation:2.5, svgOrigin:'92 150', duration:3.2, yoyo:true, repeat:-1, ease:'sine.inOut'});
+
+  // Ticker band
+  var tk = gsap.to('#track', {xPercent:-50, ease:'none', duration:22, repeat:-1}), rt;
+  ScrollTrigger.create({start:0, end:'max', onUpdate:function(s){
+    var v = s.getVelocity();
+    gsap.to(tk, {timeScale:s.direction*(1+Math.abs(v)/250), duration:.15, overwrite:true});
+    gsap.to('.band', {skewX:Math.max(-10, Math.min(10, -v/250)), duration:.2, overwrite:'auto'});
+    clearTimeout(rt);
+    rt = setTimeout(function(){ gsap.to(tk, {timeScale:1, duration:.8, overwrite:true}); gsap.to('.band', {skewX:0, duration:.6, overwrite:'auto'}); }, 120);
+  }});
+
+  // Statement lights up word by word
+  gsap.fromTo('.w', {opacity:.12}, {opacity:1, ease:'none', stagger:.12,
+    scrollTrigger:{trigger:'.stmt', start:'top 80%', end:'bottom 50%', scrub:true}});
+
+  // Rules slam across
+  gsap.utils.toArray('.fact').forEach(function(row){
+    gsap.from(row.querySelector('.ln'), {scaleX:0, transformOrigin:'left', duration:.9, ease:'power4.inOut', scrollTrigger:{trigger:row, start:'top 90%'}});
+    gsap.from(row.querySelectorAll('dt,dd'), {opacity:0, x:-30, duration:.7, stagger:.08, ease:'power3.out', scrollTrigger:{trigger:row, start:'top 90%'}});
+  });
+
+  // Timeline
+  var tl = document.querySelector('.tl'), hs = tl.parentNode;
+  hs.classList.add('hs');
+  gsap.to(tl, {x:function(){ return -(tl.scrollWidth - innerWidth*.94); }, ease:'none',
+    scrollTrigger:{trigger:hs, pin:true, scrub:.8, start:'top top', end:function(){ return '+='+tl.scrollWidth; }, invalidateOnRefresh:true}});
+  lis.forEach(function(li){
+    ScrollTrigger.create({trigger:li, start:'top 72%',
+      onEnter:function(){ li.classList.add('on'); }, onLeaveBack:function(){ li.classList.remove('on'); }});
+  });
+
+  // Closing dates run in opposite directions
+  var st = {trigger:'.close', start:'top bottom', end:'bottom top', scrub:true};
+  gsap.fromTo('.big.fill', {xPercent:0}, {xPercent:-40, ease:'none', scrollTrigger:st});
+  gsap.fromTo('.big.line', {xPercent:-40}, {xPercent:0, ease:'none', scrollTrigger:st});
+})();
+</script>
+</body>
+</html>
