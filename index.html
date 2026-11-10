@@ -649,6 +649,233 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
   }
 }
 
+
+/* =====================================
+   UNIVERSAL RESPONSIVE SYSTEM
+   ===================================== */
+
+/* Prevent unexpected sizing and overflow */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img, video, iframe, svg {
+  max-width: 100%;
+}
+
+button, input, textarea {
+  max-width: 100%;
+}
+
+/* Flexible content containers */
+main, section, header, footer {
+  min-width: 0;
+}
+
+.sec {
+  width: 100%;
+  padding-inline: clamp(16px, 5vw, 96px);
+}
+
+/* Better responsive typography */
+h1, h2, h3, p, dd, dt {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+  max-width: 100%;
+}
+
+.vi {
+  font-size: clamp(8rem, 34vw, 38rem);
+}
+
+.n {
+  font-size: clamp(2rem, 8vw, 7rem);
+}
+
+/* Responsive grids */
+.character-grid,
+.trailer-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 2.5vw, 24px);
+}
+
+.character-card {
+  min-width: 0;
+  min-height: clamp(300px, 45vw, 520px);
+}
+
+.character-info {
+  left: 0;
+  right: 0;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+.trailer-card {
+  min-width: 0;
+}
+
+.trailer-card h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+}
+
+/* Flexible age rating card */
+.age-card {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+}
+
+.age-info {
+  flex: 1;
+}
+
+/* Navigation improvements */
+.site-nav {
+  max-width: calc(100vw - 130px);
+  flex-wrap: nowrap;
+}
+
+.site-nav a {
+  white-space: nowrap;
+}
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+  .character-grid,
+  .trailer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .character-card {
+    min-height: 460px;
+  }
+
+  .sec {
+    padding-inline: 22px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
+  .count {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .u {
+    min-width: 0;
+    padding-left: 8px;
+  }
+
+  .n {
+    font-size: clamp(1.8rem, 8vw, 4rem);
+  }
+
+  .l {
+    font-size: clamp(.7rem, 2vw, 1rem);
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 420px) {
+  .count {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 16px;
+    padding-bottom: 12px;
+  }
+
+  .u:nth-child(3) {
+    border-left: none;
+  }
+
+  .vi {
+    font-size: clamp(8rem, 36vw, 12rem);
+  }
+
+  .age-card {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .age-warning {
+    display: none;
+  }
+
+  .site-nav {
+    top: 75px;
+    max-width: none;
+  }
+
+  .top {
+    margin-top: 145px;
+  }
+}
+
+/* Short landscape screens */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 650px;
+  }
+
+  .top {
+    margin-top: 100px;
+  }
+
+  .vi {
+    font-size: clamp(7rem, 22vw, 15rem);
+  }
+}
+
+/* Ultra-wide monitors */
+@media (min-width: 1600px) {
+  .sec,
+  .stmt-wrap {
+    padding-left: max(96px, calc((100vw - 1500px) / 2));
+    padding-right: max(96px, calc((100vw - 1500px) / 2));
+  }
+
+  .character-grid,
+  .trailer-grid {
+    max-width: 1500px;
+    margin-inline: auto;
+  }
+}
+
+/* Touchscreen devices */
+@media (hover: none) {
+  .character-card:hover,
+  .trailer-card:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 </style>
 <noscript><style>.pre{display:none}</style></noscript>
 </head>
@@ -900,6 +1127,20 @@ gsap.ticker.add(function(time) {
 
 gsap.ticker.lagSmoothing(0);
   }
+
+  let resizeTimer;
+
+window.addEventListener('resize', function () {
+  clearTimeout(resizeTimer);
+
+  resizeTimer = setTimeout(function () {
+    ScrollTrigger.refresh();
+  }, 250);
+});
+
+window.addEventListener('load', function () {
+  ScrollTrigger.refresh();
+});
 
   // Opening: hard slam, then a short shake
   var intro = gsap.timeline({paused:true})
