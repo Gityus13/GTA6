@@ -876,11 +876,42 @@ h1, h2, h3 {
   }
 }
 
+
+/* CINEMATIC NAVIGATION */
+
+.site-nav a {
+    position: relative;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .35s ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a.is-active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.site-nav a:hover {
+    transform: translateY(-2px);
+}
+
 </style>
 <noscript><style>.pre{display:none}</style></noscript>
 </head>
 <body>
-<nav class="site-nav" aria-label="Main navigation">
+  <nav class="site-nav" aria-label="Main navigation">
   <a href="#home">HOME</a>
   <a href="#details">DETAILS</a>
   <a href="#characters">CHARACTERS</a>
@@ -1119,6 +1150,7 @@ setInterval(function() {
   smoothWheel: true,
   wheelMultiplier: 1
 });
+window.lenis = lenis;
 lenis.on('scroll', ScrollTrigger.update);
 
 gsap.ticker.add(function(time) {
@@ -1243,8 +1275,69 @@ window.addEventListener('load', function () {
     </p>
 
     <span class="footer-copy">© 2026 GITYUS13</span>
-  </div>
+</div>
 </footer>
+
+<script>
+/* CINEMATIC NAVIGATION ENGINE */
+
+(() => {
+    const nav = document.querySelector(".site-nav");
+    if (!nav) return;
+
+    const links = [...nav.querySelectorAll('a[href^="#"]')];
+
+    const sections = links
+        .map(link => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+    function activateSection(id) {
+        links.forEach(link => {
+            const active = link.getAttribute("href") === `#${id}`;
+            link.classList.toggle("is-active", active);
+
+            if (active) {
+                link.setAttribute("aria-current", "location");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible.length) {
+            activateSection(visible[0].target.id);
+        }
+    }, {
+        threshold: [0.1, 0.25, 0.5],
+        rootMargin: "-15% 0px -55% 0px"
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    links.forEach(link => {
+        link.addEventListener("click", event => {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (!target) return;
+
+            event.preventDefault();
+
+            if (window.lenis) {
+                window.lenis.scrollTo(target, {
+                    offset: -100,
+                    duration: 1.3
+                });
+            } else {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+    });
+})();
+</script>
 
 </body>
 </html>
