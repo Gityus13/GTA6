@@ -349,10 +349,11 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
   }
 }
 
-.character-card {
-  opacity: 0;
-  animation: characterReveal .9s ease both;
-  transition: transform .35s ease, opacity .35s ease;
+@media (prefers-reduced-motion: no-preference) {
+  .character-card {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 .character-card:hover {
@@ -484,8 +485,8 @@ dd small{display:block;font:500 1.1rem/1.4 var(--text);text-transform:none;color
   right: -120px;
 }
 
-.trailer-card,
-.character-card {
+.trailer-card:hover,
+.character-card:hover {
   will-change: transform;
 }
 
@@ -907,6 +908,14 @@ h1, h2, h3 {
     transform: translateY(-2px);
 }
 
+html {
+  scroll-behavior: auto !important;
+}
+
+body {
+  overflow-y: auto !important;
+}
+
 </style>
 <noscript><style>.pre{display:none}</style></noscript>
 </head>
@@ -1144,21 +1153,26 @@ setInterval(function() {
   if (!hasG || reduce){ document.getElementById('pre').style.display='none'; lis.forEach(function(li){ li.classList.add('on'); }); return; }
 
   gsap.registerPlugin(ScrollTrigger);
-  if (window.Lenis){
-    var lenis = new Lenis({
-  lerp: 0.12,
-  smoothWheel: true,
-  wheelMultiplier: 1
-});
-window.lenis = lenis;
-lenis.on('scroll', ScrollTrigger.update);
+  if (window.Lenis && !reduce) {
+  const lenis = new Lenis({
+    duration: 1.1,
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 1,
+    syncTouch: false,
+    lerp: 0.1
+  });
 
-gsap.ticker.add(function(time) {
-  lenis.raf(time * 1000);
-});
+  window.lenis = lenis;
 
-gsap.ticker.lagSmoothing(0);
-  }
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(500, 33);
+}
 
   let resizeTimer;
 
